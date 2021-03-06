@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zakat/ui/dashboard/Dashboard.dart';
 import 'package:zakat/ui/registasi/Registasi.dart';
 
 class LoginWidget extends StatelessWidget {
@@ -129,7 +130,12 @@ class LoginWidget extends StatelessWidget {
                         // ignore: deprecated_member_use
                         child: RaisedButton(
                           color: Color(0xff0084ff),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return DashboardPage();
+                            }));
+                          },
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
                           ),
