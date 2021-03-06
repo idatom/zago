@@ -6,20 +6,29 @@ class ViewBar extends StatelessWidget {
     return ListView(
       scrollDirection: Axis.horizontal,
       children: [
-        Image.asset(
-          "assets/images/page5.png",
+        ClipRRect(
+          borderRadius: BorderRadius.circular(22),
+          child: Image.asset(
+            "assets/images/page5.png",
+          ),
         ),
         SizedBox(
           width: 20,
         ),
-        Image.asset(
-          "assets/images/page6.png",
+        ClipRRect(
+          borderRadius: BorderRadius.circular(22),
+          child: Image.asset(
+            "assets/images/page7.png",
+          ),
         ),
         SizedBox(
           width: 20,
         ),
-        Image.asset(
-          "assets/images/page2.png",
+        ClipRRect(
+          borderRadius: BorderRadius.circular(22),
+          child: Image.asset(
+            "assets/images/page6.png",
+          ),
         ),
       ],
     );

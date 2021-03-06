@@ -15,7 +15,7 @@ class DashboardPage extends StatelessWidget {
               height: 40,
             ),
             Container(
-              width: 360,
+              width: 300,
               child: Text(
                 "More Picture :",
                 style: TextStyle(

@@ -27,9 +27,14 @@ class RectangleMainMenu extends StatelessWidget {
             MenuButton(null, "assets/icons/4.png", "Donatur Zakat"),
           ]),
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-            MenuButton(null, "assets/icons/14.png", "Zakat Fitrah"),
-            MenuButton(null, "assets/icons/9.png", "Zakat Maal"),
-            MenuButton(null, "assets/icons/4.png", "Donatur Zakat"),
+            SizedBox(
+              width: 20,
+            ),
+            MenuButton(null, "assets/icons/10.png", "Hukum Zakat"),
+            MenuButton(null, "assets/icons/5.png", "Info Zakat"),
+            SizedBox(
+              width: 20,
+            )
           ]),
         ],
       ),
