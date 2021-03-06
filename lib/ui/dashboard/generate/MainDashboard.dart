@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zakat/ui/dashboard/generate/generate-button/Button.dart';
 import 'package:zakat/ui/dashboard/generate/generate-user/UserWidget.dart';
 import 'package:zakat/ui/helper/ColorTheme.dart';
 
@@ -62,7 +63,11 @@ class MainDashboardWidget extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: ColorTheme().textBlackHeader,
                       ),
-                    )
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ButtonMenu(),
                   ],
                 ),
               ),
