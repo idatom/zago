@@ -13,6 +13,7 @@ class zakat extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: "Roboto"
       ),
       initialRoute: '/Splash',
       routes: {
