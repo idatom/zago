@@ -3,14 +3,22 @@ import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:zakat/ui/helper/ColorTheme.dart';
 
-class ButtonMenu extends StatelessWidget {
+class ButtonMenu extends StatefulWidget {
+  final Widget _widget;
+  final String _icon, _name;
+  const ButtonMenu(this._icon, this._name, this._widget);
+  @override
+  ButtonMenuState createState() => ButtonMenuState();
+}
+
+class ButtonMenuState extends State<ButtonMenu> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
       child: Column(
         children: [
           Image.asset(
-            "assets/icons/4.png",
+            widget._icon,
             width: 42,
             height: 42,
           ),
@@ -18,7 +26,7 @@ class ButtonMenu extends StatelessWidget {
             height: 5,
           ),
           Text(
-            "Bayar Zakat",
+            widget._name,
             style: TextStyle(
               fontSize: 14,
               color: Colors.black,
@@ -26,7 +34,11 @@ class ButtonMenu extends StatelessWidget {
           )
         ],
       ),
-      onPressed: null,
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return widget._widget;
+        }));
+      },
     );
   }
 }

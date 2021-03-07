@@ -38,7 +38,7 @@ class MainDashboardWidget extends StatelessWidget {
               UserWidget("Ribut"),
               SizedBox(height: 35),
               Container(
-                height: 280,
+                height: 220,
                 width: 330,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(24),
@@ -52,10 +52,8 @@ class MainDashboardWidget extends StatelessWidget {
                 ),
                 alignment: Alignment.center,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SizedBox(
-                      height: 20,
-                    ),
                     Text(
                       "MENU MUZAKI",
                       style: TextStyle(
@@ -64,10 +62,24 @@ class MainDashboardWidget extends StatelessWidget {
                         color: ColorTheme().textBlackHeader,
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ButtonMenu("assets/icons/4.png", "Bayar Zakat", null),
+                        ButtonMenu("assets/icons/10.png", "Hukum Zakat", null),
+                        ButtonMenu("assets/icons/5.png", "Info Zakat", null)
+                      ],
                     ),
-                    ButtonMenu(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ButtonMenu("assets/icons/2.png", "Pengumuman", null),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        ButtonMenu("assets/icons/8.png", "profil", null)
+                      ],
+                    )
                   ],
                 ),
               ),
