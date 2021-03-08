@@ -4,7 +4,7 @@ class MenuListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 130,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [

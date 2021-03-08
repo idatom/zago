@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:zakat/ui/dashboard/generate/generate-button/Button.dart';
 import 'package:zakat/ui/dashboard/generate/generate-user/UserWidget.dart';
 import 'package:zakat/ui/helper/ColorTheme.dart';
+import 'package:zakat/ui/form/Donatur.dart';
+import 'package:zakat/ui/hukum/Hukum.dart';
+import 'package:zakat/ui/info/Info.dart';
+import 'package:zakat/ui/pilih_list/Pilih_list.dart';
 
 class MainDashboardWidget extends StatelessWidget {
   @override
@@ -65,15 +69,19 @@ class MainDashboardWidget extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        ButtonMenu("assets/icons/4.png", "Bayar Zakat", null),
-                        ButtonMenu("assets/icons/10.png", "Hukum Zakat", null),
-                        ButtonMenu("assets/icons/5.png", "Info Zakat", null)
+                        ButtonMenu(
+                            "assets/icons/4.png", "Bayar Zakat", FormDonatur()),
+                        ButtonMenu(
+                            "assets/icons/10.png", "Hukum Zakat", HukumZakat()),
+                        ButtonMenu(
+                            "assets/icons/5.png", "Info Zakat", InfoZakat()),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ButtonMenu("assets/icons/2.png", "Pengumuman", null),
+                        ButtonMenu(
+                            "assets/icons/2.png", "Pengumuman", PilihList()),
                         SizedBox(
                           width: 30,
                         ),
