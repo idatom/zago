@@ -11,10 +11,7 @@ class zakat extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: "Roboto"
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: "Roboto"),
       initialRoute: '/Splash',
       routes: {
         '/Splash': (context) => SplashWidget(),

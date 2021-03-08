@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zakat/ui/helper/ColorTheme.dart';
 import 'package:zakat/ui/home/generate/generate-menu-more/MoreMenuButton.dart';
+import 'package:zakat/ui/pilih_list/Pilih_list.dart';
 
 class MenuMore extends StatelessWidget {
   @override
@@ -22,11 +23,11 @@ class MenuMore extends StatelessWidget {
                 ),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return null;
+                    return PilihList();
                   }));
                 },
                 child: MoreMenuButton("assets/icons/15.png", "Pengumuman",
-                    "Info pengumuman donatur & penerima zakat dari masjid")),
+                    "Info pengumuman muzaki & penerima zakat dari masjid")),
           ),
           SizedBox(
             width: 17,

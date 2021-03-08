@@ -23,15 +23,15 @@ class HomeWidget extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 46,
+              height: 60,
             ),
             RectangleMainMenu(),
             SizedBox(
-              height: 12,
+              height: 50,
             ),
             MenuListView(),
             SizedBox(
-              height: 12,
+              height: 30,
             ),
             Container(
               width: 300,
@@ -45,6 +45,9 @@ class HomeWidget extends StatelessWidget {
               height: 12,
             ),
             MenuMore(),
+            SizedBox(
+              height: 10,
+            ),
           ],
         ),
       ),
