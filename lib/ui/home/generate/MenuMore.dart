@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:zakat/ui/form/Penerima.dart';
 import 'package:zakat/ui/helper/ColorTheme.dart';
 import 'package:zakat/ui/home/generate/generate-menu-more/MoreMenuButton.dart';
 import 'package:zakat/ui/pilih_list/Pilih_list.dart';
@@ -38,7 +39,11 @@ class MenuMore extends StatelessWidget {
                 style: TextButton.styleFrom(
                   backgroundColor: ColorTheme().blueMain.withOpacity(0.65),
                 ),
-                onPressed: null,
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return FormPenerima();
+                  }));
+                },
                 child: MoreMenuButton("assets/icons/2.png", "Daftar Peserta",
                     "Pendaftaran untuk penerima zakat dari masjid")),
           ),

@@ -6,6 +6,7 @@ import 'package:zakat/ui/form/Donatur.dart';
 import 'package:zakat/ui/hukum/Hukum.dart';
 import 'package:zakat/ui/info/Info.dart';
 import 'package:zakat/ui/pilih_list/Pilih_list.dart';
+import 'package:zakat/ui/profil/Profil.dart';
 
 class MainDashboardWidget extends StatelessWidget {
   @override
@@ -15,10 +16,11 @@ class MainDashboardWidget extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-              color: ColorTheme().blueMain,
-              borderRadius: BorderRadius.vertical(
-                  bottom:
-                      Radius.circular(MediaQuery.of(context).size.width / 2))),
+            color: ColorTheme().blueMain,
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(MediaQuery.of(context).size.width / 2),
+            ),
+          ),
           height: 380,
         ),
         SafeArea(
@@ -85,7 +87,8 @@ class MainDashboardWidget extends StatelessWidget {
                         SizedBox(
                           width: 30,
                         ),
-                        ButtonMenu("assets/icons/8.png", "profil", null)
+                        ButtonMenu(
+                            "assets/icons/8.png", "profil", ProfilWidget()),
                       ],
                     )
                   ],

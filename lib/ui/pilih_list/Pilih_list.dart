@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:zakat/ui/page_list/Card_donatur.dart';
+import 'package:zakat/ui/page_list/Card_penerima.dart';
 
 class PilihList extends StatelessWidget {
   @override
@@ -54,7 +56,12 @@ class PilihList extends StatelessWidget {
                           // ignore: deprecated_member_use
                           child: RaisedButton(
                             color: Color(0xfffffefe),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return CardDonatur();
+                              }));
+                            },
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ),
@@ -107,7 +114,12 @@ class PilihList extends StatelessWidget {
                           // ignore: deprecated_member_use
                           child: RaisedButton(
                             color: Color(0xfffffefe),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return CardPenerima();
+                              }));
+                            },
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ),
