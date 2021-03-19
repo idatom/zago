@@ -7,9 +7,10 @@ class CardPenerima extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(
-        "List Penerima",
-      )),
+        title: Text(
+          "List Penerima",
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.only(top: 5),
         child: Container(

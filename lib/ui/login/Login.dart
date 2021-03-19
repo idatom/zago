@@ -1,16 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:zakat/ui/dashboard/Dashboard.dart';
 import 'package:zakat/ui/registasi/Registasi.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
+// ignore: must_be_immutable
 class LoginWidget extends StatelessWidget {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  bool login = true;
+
+  Future<void> loginUser() async {
+    try {
+      // ignore: unused_local_variable
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: emailController.text, password: passwordController.text);
+      print(userCredential.user);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        return "No user found for that email.";
+      } else if (e.code == 'wrong-password') {
+        return "Wrong password provided for that user.";
+      } else {
+        return "Something Went Wrong.";
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff0084ff),
       appBar: AppBar(
-          title: Text(
-        "Login",
-      )),
+        title: Text(
+          "Login",
+        ),
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Container(
@@ -80,6 +104,7 @@ class LoginWidget extends StatelessWidget {
                           child: Center(
                             child: TextFormField(
                               keyboardType: TextInputType.emailAddress,
+                              controller: emailController,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 labelText: 'E-mail',
@@ -113,6 +138,7 @@ class LoginWidget extends StatelessWidget {
                           child: Center(
                             child: TextFormField(
                               obscureText: true,
+                              controller: passwordController,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 labelText: 'Password',
@@ -131,10 +157,9 @@ class LoginWidget extends StatelessWidget {
                         child: RaisedButton(
                           color: Color(0xff0084ff),
                           onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return DashboardPage();
-                            }));
+                            loginUser();
+                            emailController.text = '';
+                            passwordController.text = '';
                           },
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
