@@ -1,122 +1,128 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:zakat/ui/page_list/list/Trip_close.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LihatPenerima extends StatelessWidget {
-  final List<Kost> closeList = [
-    Kost("Ribut Dwi Prasetyo", DateTime.now(), "Jakarta", 200.00, "Uang"),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: new ListView.builder(
-          itemCount: closeList.length,
-          itemBuilder: (BuildContext context, int index) =>
-              buildCard(context, index)),
-    );
-  }
-
-  @override
-  // ignore: override_on_non_overriding_member
-  Widget buildCard(BuildContext context, int index) {
-    final kost = closeList[index];
-
-    return new Container(
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14), // if you need this
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.people,
-                      color: Colors.blue,
-                      size: 20,
-                    ),
-                    Text(
-                      "   :  ",
-                    ),
-                    Text(kost.name),
-                    Spacer(),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.date_range,
-                      color: Colors.blue,
-                      size: 20,
-                    ),
-                    Text(
-                      "   :  ",
-                    ),
-                    Text(
-                      "${DateFormat('dd/MM/yyyy').format(kost.startDate).toString()}",
-                    ),
-                    Spacer(),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.home,
-                      color: Colors.blue,
-                      size: 20,
-                    ),
-                    Text(
-                      "   :  ",
-                    ),
-                    Text(kost.alamat),
-                    Spacer(),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.mail,
-                      color: Colors.blue,
-                      size: 20,
-                    ),
-                    Text(
-                      "   :   ",
-                    ),
-                    Text(
-                      kost.budget.toString(),
-                      style: new TextStyle(
-                        fontSize: 16.0,
+    // <1> Use FutureBuilder
+    return FutureBuilder<QuerySnapshot>(
+      // <2> Pass `Future<QuerySnapshot>` to future
+      future: FirebaseFirestore.instance.collection('penerima').get(),
+      // ignore: missing_return
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          final List<DocumentSnapshot> documents = snapshot.data.docs;
+          return ListView(
+              children: documents
+                  .map(
+                    (doc) => Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.people,
+                                        color: Colors.blue,
+                                        size: 20,
+                                      ),
+                                      Text(
+                                        "   :  ",
+                                      ),
+                                      Text(doc['name']),
+                                      Spacer(),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.date_range,
+                                        color: Colors.blue,
+                                        size: 20,
+                                      ),
+                                      Text(
+                                        "   :  ",
+                                      ),
+                                      Text(doc['tanggal']),
+                                      Spacer(),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.home,
+                                        color: Colors.blue,
+                                        size: 20,
+                                      ),
+                                      Text(
+                                        "   :  ",
+                                      ),
+                                      Text(doc['alamat']),
+                                      Spacer(),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.mail,
+                                        color: Colors.blue,
+                                        size: 20,
+                                      ),
+                                      Text(
+                                        "   :  ",
+                                      ),
+                                      Text(
+                                        doc['total'].toString(),
+                                        style: new TextStyle(
+                                          fontSize: 16.0,
+                                        ),
+                                      ),
+                                      Spacer(),
+                                      Text(
+                                        doc['golongan'],
+                                        style: new TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Spacer(),
-                    Text(
-                      kost.jenis,
-                      style: new TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+                  )
+                  .toList());
+        } else {
+          return Center(
+            child: Image.asset(
+              "assets/icons/loading.gif",
+              width: 230,
+              height: 200,
+            ),
+          );
+        }
+      },
     );
   }
 }
