@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zakat/ui/dashboard/Dashboard.dart';
 import 'package:zakat/ui/registasi/Registasi.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -8,26 +9,28 @@ class LoginWidget extends StatelessWidget {
   final passwordController = TextEditingController();
   bool login = true;
 
-  Future<void> loginUser() async {
-    try {
-      // ignore: unused_local_variable
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: emailController.text, password: passwordController.text);
-      print(userCredential.user);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        return "No user found for that email.";
-      } else if (e.code == 'wrong-password') {
-        return "Wrong password provided for that user.";
-      } else {
-        return "Something Went Wrong.";
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    Future<void> loginUser() async {
+      try {
+        // ignore: unused_local_variable
+        UserCredential userCredential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+                email: emailController.text, password: passwordController.text);
+        print(userCredential.user);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => DashboardPage()));
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          return "No user found for that email.";
+        } else if (e.code == 'wrong-password') {
+          return "Wrong password provided for that user.";
+        } else {
+          return "Something Went Wrong.";
+        }
+      }
+    }
+
     return Scaffold(
       backgroundColor: Color(0xff0084ff),
       appBar: AppBar(

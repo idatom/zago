@@ -23,23 +23,24 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  firebase_core: ^1.0.1
-  firebase_database: ^6.1.0
-  firebase_analytics: ^7.1.1
-  firebase_auth: ^1.0.1
-  provider: ^5.0.0
   cloud_firestore: ^1.0.1
   cupertino_icons: ^1.0.2
-  splashscreen: ^1.3.5
-  intl: ^0.17.0
   datetime_picker_formfield: ^2.0.0
+  equatable: ^2.0.0
+  firebase_analytics: ^7.1.1
+  firebase_auth: ^1.0.1
+  firebase_core: ^1.0.1
+  firebase_database: ^6.1.0
+  flutter_bloc: ^7.0.0
+  intl: ^0.17.0
+  provider: ^5.0.0
+  splashscreen: ^1.3.5
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.9.0
   flutter_test:
     sdk: flutter
-    
+  flutter_launcher_icons: ^0.9.0
+
 flutter_icons:
   ios: true
   android: true
@@ -53,5 +54,5 @@ flutter:
   uses-material-design: true
 
   assets:
-  - "assets/images/"
-  - "assets/icons/"
+    - "assets/images/"
+    - "assets/icons/"
