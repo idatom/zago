@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:zakat/ui/form/Penerima.dart';
 import 'package:zakat/ui/helper/ColorTheme.dart';
 import 'package:zakat/ui/home/generate/generate-menu-more/MoreMenuButton.dart';
+import 'package:zakat/ui/page_list/Card_pengeluaran.dart';
 import 'package:zakat/ui/pilih_list/Pilih_list.dart';
 
 class MenuMore extends StatelessWidget {
@@ -28,7 +28,7 @@ class MenuMore extends StatelessWidget {
                   }));
                 },
                 child: MoreMenuButton("assets/icons/15.png", "Pengumuman",
-                    "Info pengumuman muzaki & penerima zakat dari masjid")),
+                    "Info daftar pengumuman muzaki & penerima zakat")),
           ),
           SizedBox(
             width: 17,
@@ -41,11 +41,11 @@ class MenuMore extends StatelessWidget {
                 ),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return FormPenerima();
+                    return CardPengeluaran();
                   }));
                 },
-                child: MoreMenuButton("assets/icons/2.png", "Daftar Peserta",
-                    "Pendaftaran untuk penerima zakat dari masjid")),
+                child: MoreMenuButton("assets/icons/2.png", "Pengeluaran",
+                    "Informasi pengeluaran keuangan zakat")),
           ),
           SizedBox(
             width: 10,

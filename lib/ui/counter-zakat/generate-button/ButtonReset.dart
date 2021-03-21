@@ -15,16 +15,16 @@ class ButtonResetState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [DropShadow().boxShadow],
-          color: ColorTheme().redOpacity),
-      alignment: Alignment.center,
-      width: 170,
-      height: 45,
-      child: TextButton(
-        onPressed: function,
+    return TextButton(
+      onPressed: function,
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [DropShadow().boxShadow],
+            color: ColorTheme().redOpacity),
+        alignment: Alignment.center,
+        width: 170,
+        height: 45,
         child: Text(
           "Reset",
           style: TextStyle(color: ColorTheme().white),

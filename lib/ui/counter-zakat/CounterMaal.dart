@@ -34,7 +34,7 @@ class CounterMaal extends State<CounterMaalState> {
                 borderRadius: BorderRadius.circular(55),
                 child: Container(
                   width: double.infinity,
-                  height: 415,
+                  height: 425,
                   color: ColorTheme().whiteOpacity,
                 ),
               ),
@@ -42,7 +42,7 @@ class CounterMaal extends State<CounterMaalState> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    height: 10,
+                    height: 25,
                   ),
                   Container(
                     child: Column(
@@ -70,7 +70,7 @@ class CounterMaal extends State<CounterMaalState> {
                     width: 270,
                     height: 60,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(20),
                         color: Colors.white,
                         boxShadow: [DropShadow().boxShadow]),
                     child: TextFormField(
@@ -78,6 +78,7 @@ class CounterMaal extends State<CounterMaalState> {
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
+                          border: InputBorder.none,
                           labelText: "Jumlah Keluarga",
                           errorText: _validateA ? 'Tidak Boleh Kosong' : null),
                     ),
@@ -90,7 +91,7 @@ class CounterMaal extends State<CounterMaalState> {
                     width: 270,
                     height: 60,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(20),
                         color: Colors.white,
                         boxShadow: [DropShadow().boxShadow]),
                     child: TextFormField(
@@ -98,12 +99,13 @@ class CounterMaal extends State<CounterMaalState> {
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
+                          border: InputBorder.none,
                           labelText: "Total Harta",
                           errorText: _validateB ? 'Tidak Boleh Kosong' : null),
                     ),
                   ),
                   SizedBox(
-                    height: 60,
+                    height: 50,
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -121,11 +123,10 @@ class CounterMaal extends State<CounterMaalState> {
                             double.parse(textControllerA.text),
                             double.parse(textControllerB.text)));
                       }),
-                      SizedBox(
-                        height: 10,
-                      ),
                       ButtonResetState(() {
                         context.read<CounterBloc>().add(ResetValue());
+                        textControllerA.text = "";
+                        textControllerB.text = "";
                       })
                     ],
                   ),

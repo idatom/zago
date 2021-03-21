@@ -34,7 +34,7 @@ class CounterFitrahUang extends State<CounterFitrahUangState> {
                 borderRadius: BorderRadius.circular(55),
                 child: Container(
                   width: double.infinity,
-                  height: 415,
+                  height: 425,
                   color: ColorTheme().whiteOpacity,
                 ),
               ),
@@ -42,7 +42,7 @@ class CounterFitrahUang extends State<CounterFitrahUangState> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    height: 10,
+                    height: 25,
                   ),
                   Container(
                     child: Column(
@@ -63,14 +63,14 @@ class CounterFitrahUang extends State<CounterFitrahUangState> {
                     ),
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 30,
                   ),
                   Container(
                     padding: EdgeInsets.only(right: 30, left: 30),
                     width: 270,
                     height: 60,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(20),
                         color: Colors.white,
                         boxShadow: [DropShadow().boxShadow]),
                     child: TextFormField(
@@ -78,6 +78,7 @@ class CounterFitrahUang extends State<CounterFitrahUangState> {
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
+                          border: InputBorder.none,
                           labelText: "Jumlah Keluarga",
                           errorText: _validateA ? 'Tidak Boleh Kosong' : null),
                     ),
@@ -90,7 +91,7 @@ class CounterFitrahUang extends State<CounterFitrahUangState> {
                     width: 270,
                     height: 60,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(20),
                         color: Colors.white,
                         boxShadow: [DropShadow().boxShadow]),
                     child: TextFormField(
@@ -98,6 +99,7 @@ class CounterFitrahUang extends State<CounterFitrahUangState> {
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
+                          border: InputBorder.none,
                           labelText: "Harga Beras",
                           errorText: _validateB ? 'Tidak Boleh Kosong' : null),
                     ),
@@ -126,7 +128,9 @@ class CounterFitrahUang extends State<CounterFitrahUangState> {
                       ),
                       ButtonResetState(() {
                         context.read<CounterBloc>().add(ResetValue());
-                      })
+                        textControllerA.text = "";
+                        textControllerB.text = "";
+                      }),
                     ],
                   ),
                   SizedBox(
