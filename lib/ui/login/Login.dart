@@ -20,14 +20,41 @@ class LoginWidget extends StatelessWidget {
         print(userCredential.user);
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => DashboardPage()));
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Sukses"),
+                content: Text("Kamu sudah berhasil login"),
+                actions: [
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ],
+              );
+            });
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'user-not-found') {
-          return "No user found for that email.";
-        } else if (e.code == 'wrong-password') {
-          return "Wrong password provided for that user.";
-        } else {
-          return "Something Went Wrong.";
-        }
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Error"),
+                content: Text(e.message),
+                actions: [
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ],
+              );
+            });
       }
     }
 

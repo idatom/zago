@@ -1,43 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart'
-    show
-        AppBar,
-        BorderRadius,
-        BoxDecoration,
-        BoxShadow,
-        BuildContext,
-        Center,
-        Color,
-        Colors,
-        Column,
-        Container,
-        EdgeInsets,
-        FontWeight,
-        Icon,
-        Icons,
-        InputBorder,
-        InputDecoration,
-        MainAxisSize,
-        Offset,
-        Padding,
-        // ignore: deprecated_member_use
-        RaisedButton,
-        RoundedRectangleBorder,
-        Row,
-        Scaffold,
-        SingleChildScrollView,
-        SizedBox,
-        StatelessWidget,
-        Text,
-        TextAlign,
-        TextEditingController,
-        TextFormField,
-        TextInputType,
-        TextStyle,
-        Widget,
-        showDatePicker;
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class FormPenerima extends StatelessWidget {
@@ -53,8 +17,82 @@ class FormPenerima extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
-    CollectionReference penerima = firestore.collection('penerima');
+    Future<void> createData() async {
+      try {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Verifikasi"),
+                content: Text("Apakah Data sudah benar ?"),
+                actions: [
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    child: Text(
+                      "Simpan",
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      FirebaseFirestore firestore = FirebaseFirestore.instance;
+                      CollectionReference penerima =
+                          firestore.collection('penerima');
+                      penerima.add({
+                        'name': nameController.text,
+                        'alamat': alamatController.text,
+                        'golongan': golonganController.text,
+                        'keluarga': int.tryParse(keluargaController.text) ?? 0,
+                        'kelamin': genderController.text,
+                        'tanggal': tanggalController.text,
+                        'total': double.tryParse(moneyController.text) ?? 0,
+                      });
+                      nameController.text = '';
+                      alamatController.text = '';
+                      golonganController.text = '';
+                      keluargaController.text = '';
+                      genderController.text = '';
+                      tanggalController.text = '';
+                      moneyController.text = '';
+                    },
+                  ),
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    child: Text(
+                      "Ulang",
+                      style: TextStyle(
+                        color: Colors.red,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            });
+      } catch (e) {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Error"),
+                content: Text(e.message),
+                actions: [
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ],
+              );
+            });
+      }
+    }
+
     //.
     return Scaffold(
       backgroundColor: Color(0xedfffefe),
@@ -365,27 +403,7 @@ class FormPenerima extends StatelessWidget {
                               color: Colors.blueAccent,
                               onPressed: () {
                                 // ADD DATA TO FIRESTORE
-                                penerima.add({
-                                  'name': nameController.text,
-                                  'alamat': alamatController.text,
-                                  'golongan': golonganController.text,
-                                  'keluarga':
-                                      int.tryParse(keluargaController.text) ??
-                                          0,
-                                  'kelamin': genderController.text,
-                                  'tanggal': tanggalController.text,
-                                  'total':
-                                      double.tryParse(moneyController.text) ??
-                                          0,
-                                });
-
-                                nameController.text = '';
-                                alamatController.text = '';
-                                golonganController.text = '';
-                                keluargaController.text = '';
-                                genderController.text = '';
-                                tanggalController.text = '';
-                                moneyController.text = '';
+                                createData();
                               },
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(14.0),

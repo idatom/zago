@@ -1,36 +1,69 @@
+import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
 class RegistasiWidget extends StatelessWidget {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  Future<void> createUser() async {
-    try {
-      // ignore: unused_local_variable
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: emailController.text, password: passwordController.text);
-      print(userCredential.user);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        return "The password provided is too weak.";
-      } else if (e.code == 'email-already-in-use') {
-        return "The account already exists for that email.";
-      } else {
-        return "Something Went Wrong.";
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
-    CollectionReference user = firestore.collection('user');
+    Future<void> createUser() async {
+      try {
+        FirebaseFirestore firestore = FirebaseFirestore.instance;
+        CollectionReference user = firestore.collection('user');
+        // ignore: unused_local_variable
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: emailController.text, password: passwordController.text);
+        print(userCredential.user);
+        user.add({
+          'name': nameController.text,
+          'email': emailController.text,
+          'password': passwordController.text,
+        });
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Sukses"),
+                content: Text("Kamu sudah berhasil Registasi"),
+                actions: [
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      nameController.text = '';
+                      emailController.text = '';
+                      passwordController.text = '';
+                    },
+                  )
+                ],
+              );
+            });
+      } on FirebaseAuthException catch (e) {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Error"),
+                content: Text(e.message),
+                actions: [
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ],
+              );
+            });
+      }
+    }
+
     return Scaffold(
       backgroundColor: Color(0xff0084ff),
       appBar: AppBar(
@@ -195,16 +228,7 @@ class RegistasiWidget extends StatelessWidget {
                         child: RaisedButton(
                           color: Colors.orange,
                           onPressed: () {
-                            user.add({
-                              'name': nameController.text,
-                              'email': emailController.text,
-                              'password': passwordController.text,
-                            });
                             createUser();
-
-                            nameController.text = '';
-                            emailController.text = '';
-                            passwordController.text = '';
                           },
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14.0),
