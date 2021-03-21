@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zakat/ui/counter-zakat/CounterMaal.dart';
 import 'package:zakat/ui/helper/ColorTheme.dart';
 import 'package:zakat/ui/home/generate/generate-menu-button/MenuButon.dart';
 import 'package:zakat/ui/hukum/Hukum.dart';
@@ -27,7 +28,7 @@ class RectangleMainMenu extends StatelessWidget {
                   fontWeight: FontWeight.w500)),
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             MenuButton(PilihWidget(), "assets/icons/14.png", "Zakat Fitrah"),
-            MenuButton(null, "assets/icons/9.png", "Zakat Maal"),
+            MenuButton(CounterMaalState(), "assets/icons/9.png", "Zakat Maal"),
             MenuButton(LoginWidget(), "assets/icons/4.png", "Donatur Zakat"),
           ]),
           Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [

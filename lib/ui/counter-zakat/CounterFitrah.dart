@@ -40,7 +40,7 @@ class CounterFitrahBeras extends State<CounterFitrahBerasState> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    height: 10,
+                    height: 25,
                   ),
                   Container(
                     child: Column(
@@ -68,7 +68,7 @@ class CounterFitrahBeras extends State<CounterFitrahBerasState> {
                     width: 270,
                     height: 60,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(20),
                         color: Colors.white,
                         boxShadow: [DropShadow().boxShadow]),
                     child: TextFormField(
@@ -76,12 +76,13 @@ class CounterFitrahBeras extends State<CounterFitrahBerasState> {
                       textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
+                          border: InputBorder.none,
                           labelText: "Jumlah Keluarga",
                           errorText: _validate ? 'Tidak Boleh Kosong' : null),
                     ),
                   ),
                   SizedBox(
-                    height: 60,
+                    height: 40,
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -100,6 +101,7 @@ class CounterFitrahBeras extends State<CounterFitrahBerasState> {
                       ),
                       ButtonResetState(() {
                         context.read<CounterBloc>().add(ResetValue());
+                        textController.text = "";
                       })
                     ],
                   ),

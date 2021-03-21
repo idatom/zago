@@ -15,16 +15,16 @@ class ButtonHitungState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [DropShadow().boxShadow],
-          color: ColorTheme().blueMain),
-      alignment: Alignment.center,
-      width: 170,
-      height: 45,
-      child: TextButton(
-        onPressed: function,
+    return TextButton(
+      onPressed: function,
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [DropShadow().boxShadow],
+            color: ColorTheme().blueMain),
+        alignment: Alignment.center,
+        width: 170,
+        height: 45,
         child: Text(
           "Hitung",
           style: TextStyle(color: ColorTheme().white),
