@@ -2,42 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart'
-    show
-        AppBar,
-        BorderRadius,
-        BoxDecoration,
-        BoxShadow,
-        BuildContext,
-        Center,
-        Color,
-        Colors,
-        Column,
-        Container,
-        EdgeInsets,
-        FontWeight,
-        Icon,
-        Icons,
-        InputBorder,
-        InputDecoration,
-        MainAxisSize,
-        Offset,
-        Padding,
-        // ignore: deprecated_member_use
-        RaisedButton,
-        RoundedRectangleBorder,
-        Row,
-        Scaffold,
-        SingleChildScrollView,
-        SizedBox,
-        StatelessWidget,
-        Text,
-        TextAlign,
-        TextFormField,
-        TextInputType,
-        TextStyle,
-        Widget,
-        showDatePicker;
+import 'package:flutter/material.dart';
 
 class FormDonatur extends StatelessWidget {
   final nameController = TextEditingController();
@@ -53,8 +18,85 @@ class FormDonatur extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
-    CollectionReference donatur = firestore.collection('donatur');
+    Future<void> createData() async {
+      try {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Verifikasi"),
+                content: Text("Apakah Data sudah benar ?"),
+                actions: [
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    child: Text(
+                      "Simpan",
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      FirebaseFirestore firestore = FirebaseFirestore.instance;
+                      CollectionReference donatur =
+                          firestore.collection('donatur');
+                      donatur.add({
+                        'name': nameController.text,
+                        'alamat': alamatController.text,
+                        'pekerjaan': pekerjaanController.text,
+                        'keluarga': int.tryParse(keluargaController.text) ?? 0,
+                        'zakat': zakatController.text,
+                        'bentuk': bentukController.text,
+                        'tanggal': tanggalController.text,
+                        'total': int.tryParse(totalController.text) ?? 0,
+                      });
+
+                      nameController.text = '';
+                      alamatController.text = '';
+                      pekerjaanController.text = '';
+                      keluargaController.text = '';
+                      zakatController.text = '';
+                      bentukController.text = '';
+                      tanggalController.text = '';
+                      totalController.text = '';
+                    },
+                  ),
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    child: Text(
+                      "Ulang",
+                      style: TextStyle(
+                        color: Colors.red,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            });
+      } catch (e) {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Error"),
+                content: Text(e.message),
+                actions: [
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ],
+              );
+            });
+      }
+    }
+
     //.
     return Scaffold(
       backgroundColor: Color(0xedfffefe),
@@ -399,28 +441,7 @@ class FormDonatur extends StatelessWidget {
                               color: Colors.blueAccent,
                               onPressed: () {
                                 // ADD DATA TO FIRESTORE
-                                donatur.add({
-                                  'name': nameController.text,
-                                  'alamat': alamatController.text,
-                                  'pekerjaan': pekerjaanController.text,
-                                  'keluarga':
-                                      int.tryParse(keluargaController.text) ??
-                                          0,
-                                  'zakat': zakatController.text,
-                                  'bentuk': bentukController.text,
-                                  'tanggal': tanggalController.text,
-                                  'total':
-                                      int.tryParse(totalController.text) ?? 0,
-                                });
-
-                                nameController.text = '';
-                                alamatController.text = '';
-                                pekerjaanController.text = '';
-                                keluargaController.text = '';
-                                zakatController.text = '';
-                                bentukController.text = '';
-                                tanggalController.text = '';
-                                totalController.text = '';
+                                createData();
                               },
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(14.0),
