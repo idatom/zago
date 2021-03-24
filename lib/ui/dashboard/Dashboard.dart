@@ -3,14 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:zakat/ui/dashboard/generate/MainDashboard.dart';
 import 'package:zakat/ui/dashboard/generate/generate-button/View.dart';
 
-class DashboardPage extends StatelessWidget {
+// ignore: must_be_immutable
+// ignore: camel_case_types
+// ignore: must_be_immutable
+class DashboardPage extends StatefulWidget {
+  String displayName;
+  DashboardPage(this.displayName);
+  @override
+  _DashboardPage createState() => _DashboardPage();
+}
+
+class _DashboardPage extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
       child: SingleChildScrollView(
         child: Column(
           children: [
-            MainDashboardWidget(),
+            MainDashBoardWidget(widget.displayName),
             SizedBox(
               height: 40,
             ),

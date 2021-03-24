@@ -41,7 +41,8 @@ class ButtonMenuState extends State<ButtonClose> {
       ),
       onPressed: () {
         signOut();
-        Navigator.pop(context, MaterialPageRoute(builder: (context) {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) {
           return widget._widget;
         }));
       },

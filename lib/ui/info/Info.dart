@@ -20,14 +20,16 @@ class InfoZakat extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Center(
-          child: Container(
-            width: 360,
-            color: ColorTheme().white,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                TextList(),
-              ],
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Container(
+              color: ColorTheme().white,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextList(),
+                ],
+              ),
             ),
           ),
         ),

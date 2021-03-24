@@ -5,7 +5,6 @@ class TextList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Text(
-        "\n"
         "HUKUM ZAKAT :\n\n"
         "       Zakat merupakan salah satu rukun islam, dan menjadi salah satu unsur pokok bagi tegaknya syariat islam. Oleh sebab itu hukum zakat adalah wajib (fardhu) atas setiap muslim yang telah memenuhi syarat-syarat tertentu. Zakat termasuk dalam kategori ibadah seperti shalat, haji, dan puasa yang telah diatur secara rinci berdasarkan Al-Qur’an dan As Sunnah. Zakat juga merupakan amal sosial kemasyarakatan dan kemanusiaan yang dapat berkembang sesuai dengan perkembangan ummat manusia.\n\n"
         "       Adapun dalil nash wajibnya zakat adalah Al-qur’an, hadits dan ijma’ shahabat. Diantaranya adalah QS At taubah ayat 103, dan QS At taubah ayat 71 artinya ” dan orang-orang yang beriman, lelaki dan perempuan, sebahagian mereka (adalah) menjadi penolong bagi sebahagian yang lain. Mereka menyuruh (mengerjakan) yang ma’ruf, mencegah dari yang munkar, mendirikan shalat, menunaikan zakat dan mereka taat pada Allah dan Rasulnya. Mereka itu akan diberi rahmat oleh Allah, sesungguhnya Allah Maha perkasa lagi Maha Bijaksana. (QS At taubah [9]; 71).\n\n\n"

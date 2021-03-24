@@ -9,7 +9,18 @@ import 'package:zakat/ui/pilih_hitung/Pilih_hitung_dash.dart';
 import 'package:zakat/ui/pilih_list/Pilih_list.dart';
 import 'package:zakat/ui/welcome/Welcome.dart';
 
-class MainDashboardWidget extends StatelessWidget {
+// ignore: camel_case_types
+// ignore: must_be_immutable
+class MainDashBoardWidget extends StatefulWidget {
+  String displayName;
+  MainDashBoardWidget(this.displayName);
+  @override
+  _MainDashboardWidget createState() => _MainDashboardWidget();
+}
+
+class _MainDashboardWidget extends State<MainDashBoardWidget> {
+  // String getName = getCurrentUser();
+
   @override
   Widget build(BuildContext context) {
     return new WillPopScope(
@@ -44,7 +55,7 @@ class MainDashboardWidget extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                UserWidget("Ribut"),
+                UserWidget(widget.displayName),
                 SizedBox(height: 35),
                 Container(
                   height: 220,
