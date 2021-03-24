@@ -5,7 +5,6 @@ class TextList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Text(
-        "\n"
         "JENIS DAN MACAM ZAKAT : \n\n"
         "Zakat terbagi atas dua jenis yakni: \n\n"
         "1. Zakat Nafs (jiwa)\n\n"

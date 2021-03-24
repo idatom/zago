@@ -21,7 +21,8 @@ class UserWidgetState extends State<UserWidget> {
           height: 5,
         ),
         Text(
-          "Welcome " + widget._name,
+          "Welcome\n" + widget._name,
+          textAlign: TextAlign.center,
           style: TextStyle(fontSize: 18, color: ColorTheme().white),
         )
       ],

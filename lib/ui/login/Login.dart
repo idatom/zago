@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:zakat/ui/dashboard/Dashboard.dart';
-import 'package:zakat/ui/registasi/Registasi.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 // ignore: must_be_immutable
@@ -11,6 +10,35 @@ class LoginWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> createUser() async {
+      return showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(
+                "Perhatian !",
+                style: TextStyle(
+                  color: Colors.red,
+                ),
+              ),
+              content: Text(
+                "Hubungi admin di +6289675685074 untuk registrasi akun baru",
+              ),
+              actions: [
+                // ignore: deprecated_member_use
+                FlatButton(
+                  child: Text(
+                    "Oke",
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            );
+          });
+    }
+
     Future<void> loginUser() async {
       try {
         // ignore: unused_local_variable
@@ -18,8 +46,11 @@ class LoginWidget extends StatelessWidget {
             .signInWithEmailAndPassword(
                 email: emailController.text, password: passwordController.text);
         print(userCredential.user);
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => DashboardPage()));
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    DashboardPage(userCredential.user.email.toString())));
         showDialog(
             context: context,
             builder: (BuildContext context) {
@@ -29,7 +60,7 @@ class LoginWidget extends StatelessWidget {
                 actions: [
                   // ignore: deprecated_member_use
                   FlatButton(
-                    child: Text("Ok"),
+                    child: Text("Oke"),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -213,11 +244,7 @@ class LoginWidget extends StatelessWidget {
                         child: RaisedButton(
                           color: Colors.orange,
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => RegistasiWidget()),
-                            );
+                            createUser();
                           },
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14.0),
