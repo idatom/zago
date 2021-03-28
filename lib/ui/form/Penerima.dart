@@ -11,6 +11,7 @@ class FormPenerima extends StatelessWidget {
   final keluargaController = TextEditingController();
   final genderController = TextEditingController();
   final tanggalController = TextEditingController();
+  final bentukController = TextEditingController();
   final moneyController = TextEditingController();
 
   final format = DateFormat("dd-MM-yyyy");
@@ -46,6 +47,7 @@ class FormPenerima extends StatelessWidget {
                         'keluarga': int.tryParse(keluargaController.text) ?? 0,
                         'kelamin': genderController.text,
                         'tanggal': tanggalController.text,
+                        'bentuk': bentukController.text,
                         'total': double.tryParse(moneyController.text) ?? 0,
                       });
                       nameController.text = '';
@@ -54,6 +56,7 @@ class FormPenerima extends StatelessWidget {
                       keluargaController.text = '';
                       genderController.text = '';
                       tanggalController.text = '';
+                      bentukController.text = '';
                       moneyController.text = '';
                     },
                   ),
@@ -356,6 +359,40 @@ class FormPenerima extends StatelessWidget {
                                             currentValue ?? DateTime.now(),
                                         lastDate: DateTime(2100));
                                   },
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          Container(
+                            width: 300,
+                            height: 60,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x3f000000),
+                                  blurRadius: 4,
+                                  offset: Offset(0, 4),
+                                ),
+                              ],
+                              color: Color(0xedfffefe),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 10,
+                                right: 10,
+                              ),
+                              child: Center(
+                                child: TextFormField(
+                                  keyboardType: TextInputType.text,
+                                  controller: bentukController,
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    labelText: 'Dalam bentuk',
+                                    hintText: 'Bentuk yang diterima',
+                                    icon: Icon(Icons.book),
+                                  ),
                                 ),
                               ),
                             ),
