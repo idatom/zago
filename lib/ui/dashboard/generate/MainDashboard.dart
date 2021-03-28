@@ -6,7 +6,8 @@ import 'package:zakat/ui/form/Penerima.dart';
 import 'package:zakat/ui/helper/ColorTheme.dart';
 import 'package:zakat/ui/form/Donatur.dart';
 import 'package:zakat/ui/pilih_hitung/Pilih_hitung_dash.dart';
-import 'package:zakat/ui/pilih_list/Pilih_list.dart';
+import 'package:zakat/ui/pilih_list/Pilih_list_dash.dart';
+import 'package:zakat/ui/report/Report.dart';
 import 'package:zakat/ui/welcome/Welcome.dart';
 
 // ignore: camel_case_types
@@ -59,7 +60,7 @@ class _MainDashboardWidget extends State<MainDashBoardWidget> {
                 SizedBox(height: 35),
                 Container(
                   height: 220,
-                  width: 330,
+                  width: 350,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24),
                     color: ColorTheme().white,
@@ -85,26 +86,43 @@ class _MainDashboardWidget extends State<MainDashBoardWidget> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          ButtonMenu("assets/icons/4.png", "Bayar Zakat",
-                              FormDonatur()),
-                          ButtonMenu("assets/icons/14.png", "Hitung Zakat",
-                              PilihDashWidget()),
-                          ButtonMenu(
-                              "assets/icons/1.png", "Penerima", FormPenerima()),
+                          SizedBox(
+                            width: 105,
+                            child: ButtonMenu("assets/icons/4.png",
+                                "Bayar Zakat", FormDonatur()),
+                          ),
+                          SizedBox(
+                            width: 105,
+                            child: ButtonMenu("assets/icons/14.png",
+                                "Hitung Zakat", PilihDashWidget()),
+                          ),
+                          SizedBox(
+                            width: 105,
+                            child: ButtonMenu("assets/icons/1.png", "Penerima",
+                                FormPenerima()),
+                          ),
                         ],
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          ButtonMenu(
-                              "assets/icons/2.png", "Pengumuman", PilihList()),
                           SizedBox(
-                            width: 30,
+                            width: 105,
+                            child: ButtonMenu("assets/icons/2.png",
+                                "Pengumuman", PilihListDash()),
                           ),
-                          ButtonClose("assets/icons/exit.png", "Logout",
-                              WelcomeWidget()),
+                          SizedBox(
+                            width: 105,
+                            child: ButtonMenu("assets/icons/report.png",
+                                "Report Data", ReportPage()),
+                          ),
+                          SizedBox(
+                            width: 105,
+                            child: ButtonClose("assets/icons/exit.png",
+                                "Logout", WelcomeWidget()),
+                          ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),

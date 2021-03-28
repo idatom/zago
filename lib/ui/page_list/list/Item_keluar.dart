@@ -61,6 +61,13 @@ class LihatKeluar extends StatelessWidget {
                                         ),
                                       ),
                                       Spacer(),
+                                      Text(
+                                        doc['bentuk'].toString(),
+                                        style: new TextStyle(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
