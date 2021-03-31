@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zakat/pdf-api/pdf_api.dart';
 
 class ReportPage extends StatelessWidget {
   @override
@@ -16,7 +17,11 @@ class ReportPage extends StatelessWidget {
                 width: 188,
                 height: 60,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    final pdfFile = await PdfApi.generateDonatur();
+
+                    PdfApi.openFile(pdfFile);
+                  },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.white,
                     onPrimary: Colors.blue,
@@ -34,7 +39,11 @@ class ReportPage extends StatelessWidget {
                 width: 188,
                 height: 60,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    final pdfFile = await PdfApi.generatePenerima();
+
+                    PdfApi.openFile(pdfFile);
+                  },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.white,
                     onPrimary: Colors.blue,
