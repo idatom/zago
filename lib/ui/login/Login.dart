@@ -50,7 +50,7 @@ class LoginWidget extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    DashboardPage(userCredential.user.email.toString())));
+                    DashboardPage(userCredential.user.email)));
         showDialog(
             context: context,
             builder: (BuildContext context) {
