@@ -110,31 +110,6 @@ class PdfApi {
   }
 
   static Future<File> generatePenerima() async {
-    static Widget buildHeadline(Uint8List image) => Container(
-      padding: EdgeInsets.only(bottom: 3 * PdfPageFormat.mm),
-      decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(width: 2, color: PdfColors.black)),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-              flex: 1,
-              child: SizedBox(
-                  height: 2 * PdfPageFormat.cm,
-                  child: Image(MemoryImage(image)))),
-          Expanded(
-              flex: 5,
-              child: Center(
-                  child: Column(children: [
-                Text("Mushola Nurul Huda",
-                    style:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                Text('Jl. Cemara RT 02 RW 08 Kel. Grogol Kec. Limo')
-              ])))
-        ],
-      ));
-
-  static Future<File> generateDonatur() async {
     final imageJpg = (await rootBundle.load('assets/images/nurul-hidayah.jpeg'))
         .buffer
         .asUint8List();
@@ -201,7 +176,6 @@ class PdfApi {
               margin: EdgeInsets.only(top: 1 * PdfPageFormat.cm),
               child: Text(text, style: TextStyle(color: PdfColors.black)));
         }));
-
 
     return saveDocument(name: "Data_Penerima.pdf", pdf: pdf);
   }
