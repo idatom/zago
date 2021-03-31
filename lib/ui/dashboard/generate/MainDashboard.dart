@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:zakat/ui/dashboard/generate/generate-button/Button.dart';
 import 'package:zakat/ui/dashboard/generate/generate-button/Logout.dart';
+import 'package:zakat/ui/dashboard/generate/generate-button/Report.dart';
 import 'package:zakat/ui/dashboard/generate/generate-user/UserWidget.dart';
 import 'package:zakat/ui/form/Penerima.dart';
 import 'package:zakat/ui/helper/ColorTheme.dart';
 import 'package:zakat/ui/form/Donatur.dart';
 import 'package:zakat/ui/pilih_hitung/Pilih_hitung_dash.dart';
 import 'package:zakat/ui/pilih_list/Pilih_list_dash.dart';
-import 'package:zakat/ui/report/Report.dart';
 import 'package:zakat/ui/welcome/Welcome.dart';
 
 // ignore: camel_case_types
@@ -113,8 +113,8 @@ class _MainDashboardWidget extends State<MainDashBoardWidget> {
                           ),
                           SizedBox(
                             width: 105,
-                            child: ButtonMenu("assets/icons/report.png",
-                                "Report Data", ReportPage()),
+                            child: Report(
+                                "assets/icons/report.png", "Report Data"),
                           ),
                           SizedBox(
                             width: 105,

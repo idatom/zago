@@ -45,6 +45,23 @@ class ButtonMenuState extends State<ButtonClose> {
             MaterialPageRoute(builder: (context) {
           return widget._widget;
         }));
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Sukses"),
+                content: Text("Kamu sudah berhasil logout"),
+                actions: [
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    child: Text("Oke"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ],
+              );
+            });
       },
     );
   }
