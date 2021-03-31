@@ -73,7 +73,7 @@ class WelcomeWidget extends StatelessWidget {
                     child: RaisedButton(
                       color: Color(0xedfffefe),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => HomeWidget()),
                         );
