@@ -48,7 +48,7 @@ class FormDonatur extends StatelessWidget {
                         'zakat': zakatController.text,
                         'bentuk': bentukController.text,
                         'tanggal': tanggalController.text,
-                        'total': int.tryParse(totalController.text) ?? 0,
+                        'total': double.tryParse(totalController.text) ?? 0,
                       });
 
                       nameController.text = '';

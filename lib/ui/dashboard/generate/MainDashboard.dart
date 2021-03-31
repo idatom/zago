@@ -7,7 +7,7 @@ import 'package:zakat/ui/helper/ColorTheme.dart';
 import 'package:zakat/ui/form/Donatur.dart';
 import 'package:zakat/ui/pilih_hitung/Pilih_hitung_dash.dart';
 import 'package:zakat/ui/pilih_list/Pilih_list_dash.dart';
-import 'package:zakat/ui/report/Report.dart';
+import 'package:zakat/ui/report/ReportO.dart';
 import 'package:zakat/ui/welcome/Welcome.dart';
 
 // ignore: camel_case_types
