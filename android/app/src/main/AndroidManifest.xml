@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zago.zakat">
    <application
-        android:label="zakat"
+        android:label="ZaGo"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

@@ -27,7 +27,7 @@ class RectangleUpper extends StatelessWidget {
             width: 22,
           ),
           Text(
-            "Mushola Al-Nur Hidayah",
+            "Musollah Nurul Huda",
             style: TextStyle(
                 fontFamily: 'Roboto',
                 fontSize: 13,

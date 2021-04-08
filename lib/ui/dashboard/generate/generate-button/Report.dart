@@ -19,7 +19,7 @@ class ButtonMenuState extends State<Report> {
       return showDialog(
           context: context,
           builder: (BuildContext context) {
-            return AlertDialog(
+            return SimpleDialog(
               title: Center(
                 child: Text(
                   "Proses",
@@ -28,65 +28,96 @@ class ButtonMenuState extends State<Report> {
                   ),
                 ),
               ),
-              content: SizedBox(
-                width: 50,
-                height: 20,
-                child: Center(
-                  child: Text(
-                    "Convert data to pdf",
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Center(
+                          child: Text(
+                            "convert data to pdf",
+                            style: TextStyle(fontSize: 20.0),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              actions: [
-                // ignore: deprecated_member_use
-                FlatButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                    side: BorderSide(color: Colors.blue),
-                  ),
+                Padding(
+                  padding: EdgeInsets.all(20.0),
                   child: Text(
-                    "MUZAKI",
-                    style: TextStyle(
-                      color: Colors.blue,
-                    ),
+                    "Data muzaki :",
                   ),
-                  onPressed: () async {
-                    final pdfFile = await PdfApi.generateDonatur();
-                    PdfApi.openFile(pdfFile);
-                  },
                 ),
-                // ignore: deprecated_member_use
-                FlatButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                    side: BorderSide(color: Colors.blue),
-                  ),
-                  child: Text(
-                    "PENERIMA",
-                    style: TextStyle(
-                      color: Colors.blue,
+                Padding(
+                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                  // ignore: deprecated_member_use
+                  child: FlatButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      side: BorderSide(color: Colors.blue),
                     ),
+                    child: Text(
+                      "Print",
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
+                    onPressed: () async {
+                      final pdfFile = await PdfApi.generateDonatur();
+                      PdfApi.openFile(pdfFile);
+                    },
                   ),
-                  onPressed: () async {
-                    final pdfFile = await PdfApi.generatePenerima();
-                    PdfApi.openFile(pdfFile);
-                  },
                 ),
-                // ignore: deprecated_member_use
-                FlatButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                    side: BorderSide(color: Colors.red),
-                  ),
+                Padding(
+                  padding: EdgeInsets.all(20.0),
                   child: Text(
-                    "Exit",
-                    style: TextStyle(
-                      color: Colors.red,
-                    ),
+                    "Data penerima :",
                   ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                  // ignore: deprecated_member_use
+                  child: FlatButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      side: BorderSide(color: Colors.blue),
+                    ),
+                    child: Text(
+                      "Print",
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
+                    onPressed: () async {
+                      final pdfFile = await PdfApi.generatePenerima();
+                      PdfApi.openFile(pdfFile);
+                    },
+                  ),
+                ),
+                Divider(),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(50.0, 10.0, 50.0, 0),
+                  // ignore: deprecated_member_use
+                  child: FlatButton(
+                    color: Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    child: Text(
+                      "Exit",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
                 )
               ],
             );
